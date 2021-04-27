@@ -5,7 +5,6 @@ const hello = (req, res) => {
 };
 
 const login = (req, res) => {
-    console.log(res);
     res.render("home/login");
 };
 
