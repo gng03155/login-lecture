@@ -8,7 +8,7 @@ const loginBtn = document.querySelector("#login");
 const login = () => {
     const req = {
         id: id.value,
-        pw: pw.value,
+        psword: pw.value,
     }
 
     fetch("/login", {
@@ -17,7 +17,15 @@ const login = () => {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(req),
-    });
+    })
+        .then(res => {
+            console.log(res.clone().json());
+            return res.json()
+        })
+        .then(res => console.log(res))
+        .catch(err => {
+            console.error(err);
+        })
 
 };
 

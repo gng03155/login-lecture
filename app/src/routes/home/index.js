@@ -7,12 +7,13 @@ const express = require("express");
 
 const router = express.Router();
 
-const { hello, login } = require("./home.ctrl");
+const { output, process } = require("./home.ctrl");
 
 //루트 경로 받아오기
-router.get("/", hello);
+router.get("/", output.home);
+router.get("/login", output.login);
 
-router.get("/login", login);
+router.post("/login", process.login);
 
 module.exports = router;
 
