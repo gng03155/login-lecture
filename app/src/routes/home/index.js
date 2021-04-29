@@ -12,6 +12,7 @@ const { output, process } = require("./home.ctrl");
 //루트 경로 받아오기
 router.get("/", output.home);
 router.get("/login", output.login);
+router.get("/register", output.register);
 
 router.post("/login", process.login);
 
