@@ -1,7 +1,7 @@
 "use strict";
 
 const id = document.querySelector("#id");
-const pw = document.querySelector("#password");
+const pw = document.querySelector("#psword");
 const loginBtn = document.querySelector("#login");
 
 
