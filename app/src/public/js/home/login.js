@@ -18,11 +18,15 @@ const login = () => {
         },
         body: JSON.stringify(req),
     })
+        .then(res => res.json())
         .then(res => {
-            console.log(res.clone().json());
-            return res.json()
+            if (res.success) {
+                location.href = "/";
+            } else {
+                console.log(res.msg);
+                alert(res.msg);
+            }
         })
-        .then(res => console.log(res))
         .catch(err => {
             console.error(err);
         })
