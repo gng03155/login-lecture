@@ -5,7 +5,10 @@ const pw = document.querySelector("#psword");
 const loginBtn = document.querySelector("#login");
 
 
-const login = () => {
+const login = (e) => {
+
+    e.preventDefault();
+
     const req = {
         id: id.value,
         psword: pw.value,
@@ -23,7 +26,6 @@ const login = () => {
             if (res.success) {
                 location.href = "/";
             } else {
-                console.log(res.msg);
                 alert(res.msg);
             }
         })
@@ -34,4 +36,4 @@ const login = () => {
 };
 
 
-loginBtn.addEventListener("click", login);
+loginBtn.addEventListener("click", (e) => login(e));

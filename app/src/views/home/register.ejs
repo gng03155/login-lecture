@@ -7,16 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/home/login.css">
+    <script src="/js/home/register.js" defer></script>
 </head>
 
 <div class="login-page">
     <div class="form">
         <form class="register-form" style="display: block;">
-            <input type="text" placeholder="아이디" /><input id="name" type="text" placeholder="이름" />
-            <input type="password" placeholder="비밀번호" />
+            <input id="id" type="text" placeholder="아이디" />
+            <input id="name" type="text" placeholder="이름" />
+            <input id="psword" type="password" placeholder="비밀번호" />
             <input id="confirm-psword" type="password" placeholder="비밀번호확인" />
             <!-- <input type="text" placeholder="이메일" /> -->
-            <button>create</button>
+            <button id="register">create</button>
             <p class="message">Already registered? <a href="/login">Sign In</a></p>
         </form>
     </div>
