@@ -12,8 +12,9 @@ class UserStorage {
             .catch(console.error);
     }
 
-    static getUsers(...fields) {
-        // const users = this.#users;
+    static async getUsers(isAll = false, ...fields) {
+        const users = await this.#getAccount();
+        if (isAll) return users;
         const newUsers = fields.reduce((newUsers, field) => {
             if (users.hasOwnProperty(field)) {
                 newUsers[field] = users[field];
@@ -36,8 +37,16 @@ class UserStorage {
         return userInfo;
     }
 
-    static save(userInfo) {
-        // const users = this.#users;
+    static async save(userInfo) {
+        const users = await this.getUsers(true);
+        if (users.id.includes(userInfo.id)) {
+            //throw로 err를 보내주면 await에서 catch로 받아 올 수 있음
+            throw "이미 존재하는 아이디입니다.";
+        }
+        users.id.push(userInfo.id);
+        users.name.push(userInfo.name);
+        users.psword.push(userInfo.psword);
+        fs.writeFile("./src/databases/users.json", JSON.stringify(users));
         return { success: true };
     }
 }

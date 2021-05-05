@@ -19,10 +19,16 @@ class User {
 
     }
 
-    register() {
-        const client = this.body;
-        const response = UserStorage.save(client);
-        return response;
+    async register() {
+        try {
+            const client = this.body;
+            //위에서 처럼 return으로 받아오면 err는  response값에 적용이 되기 때문에 catch로 사용 불가하지만 throw로 보내주면 response가 해당 err를 갖고 있는게 아닌 async함수 자체로 보내주기 때문에 catch에서 불러 올 수 있음
+            const response = await UserStorage.save(client);
+            return response;
+        }
+        catch (err) {
+            return { success: false, msg: err };
+        }
     }
 
 }
