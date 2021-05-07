@@ -9,8 +9,8 @@ class User {
     async login() {
         const client = this.body;
         try {
-            const { id, psword } = await UserStorage.getUserInfo(client.id);
-            if (id) {
+            const user = await UserStorage.getUserInfo(client.id);
+            if (user) {
                 if (id === client.id && psword === client.psword) {
                     return { success: true };
                 }

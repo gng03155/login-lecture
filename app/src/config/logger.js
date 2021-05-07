@@ -44,7 +44,7 @@ const logger = createLogger({
     ],
 });
 
-//배포모드가 아닐경우 로그를 콘솔로도 출력
+//배포모드가 아닐경우 로그를 파일 + 콘솔로 출력
 if (process.env.NODE_ENV !== "production") {
     logger.add(
         //콘솔출력
