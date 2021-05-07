@@ -52,4 +52,9 @@ if (process.env.NODE_ENV !== "production") {
     )
 }
 
+//morgan에서 전달받은 메시지를 출력
+logger.stream = {
+    write: (message) => { logger.info(message) },
+};
+
 module.exports = logger;

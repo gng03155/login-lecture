@@ -7,6 +7,13 @@ const loginBtn = document.querySelector("#login");
 
 const login = (e) => {
 
+    if (!id.value) {
+        return alert("아이디를 입력해주세요!");
+    }
+    if (!psword.value) {
+        return alert("비밀번호를 입력해주세요.");
+    }
+
     e.preventDefault();
 
     const req = {
@@ -26,6 +33,7 @@ const login = (e) => {
             if (res.success) {
                 location.href = "/";
             } else {
+                if (res.err) return alert(res.err);
                 alert(res.msg);
             }
         })
